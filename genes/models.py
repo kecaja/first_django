@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 
 # Create your models here.
@@ -14,6 +15,10 @@ class Chromosone(models.Model):
 class Interval(models.Model):
     start_coordinate = models.IntegerField()
     end_coordinate = models.IntegerField()
-    gene = models.ForeignKey(Gene)
-    build = models.ForeignKey(Build)
-    chromosone = models.ForeignKey(Chromosone)
+    gene = models.ForeignKey(Gene, on_delete=models.PROTECT, related_name='Interval')
+    build = models.ForeignKey(Build, on_delete=models.PROTECT, related_name='Interval')
+    chromosone = models.ForeignKey(Chromosone, on_delete=models.PROTECT, related_name='Interval')
+
+
+
+    
